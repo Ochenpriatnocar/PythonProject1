@@ -16,3 +16,9 @@ def mask_account_card(account_info: str) -> str:
         return accont_or_paiment_sistem + " " + get_mask_account(account_or_card_number)
     else:
         return accont_or_paiment_sistem + " " + get_mask_card_number(account_or_card_number)
+
+
+def get_date(string_date: str) -> str:
+    """Преобразование даты в читаемый формат"""
+
+    return str(string_date[8:10] + "." + string_date[5:7] + "." + string_date[0:4])
