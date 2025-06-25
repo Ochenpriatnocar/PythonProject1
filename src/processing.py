@@ -1,6 +1,3 @@
-# from src.widget import get_date
-
-
 def filter_by_state(list_of_status_state: list[dict], state: str = "EXECUTED") -> list[dict]:
     """Функция фильтрации по статусу операции"""
 
@@ -16,3 +13,10 @@ def filter_by_state(list_of_status_state: list[dict], state: str = "EXECUTED") -
         return operation_executed
     elif state == "CANCELED":
         return operation_canceled
+
+
+def sort_by_date(list_of_date: list[dict], rev: bool = True) -> list[dict]:
+    """Функция сортировки элементов списка по дате"""
+
+    sorted_list_of_date = sorted(list_of_date, key=lambda i: i["date"], reverse=rev)
+    return sorted_list_of_date
