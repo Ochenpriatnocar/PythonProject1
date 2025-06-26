@@ -1,22 +1,22 @@
-def filter_by_state(list_of_status_state: list[dict], state: str = "EXECUTED") -> list[dict]:
+def filter_by_state(transactions: list, state: str = "EXECUTED") -> list:
     """Функция фильтрации по статусу операции"""
 
-    operation_executed = []
-    operation_canceled = []
+    transactions_executed = []
+    transactions_canceled = []
 
-    for operation in list_of_status_state:
-        if operation["state"] == "EXECUTED":
-            operation_executed.append(operation)
-        elif operation["state"] == "CANCELED":
-            operation_canceled.append(operation)
+    for transaction in transactions:
+        if transaction["state"] == "EXECUTED":
+            transactions_executed.append(transaction)
+        elif transaction["state"] == "CANCELED":
+            transactions_canceled.append(transaction)
     if state == "EXECUTED":
-        return operation_executed
+        return transactions_executed
     elif state == "CANCELED":
-        return operation_canceled
+        return transactions_canceled
 
 
-def sort_by_date(list_of_date: list[dict], rev: bool = True) -> list[dict]:
+def sort_by_date(list_of_date: list[dict], reverse_: bool = True) -> list[dict]:
     """Функция сортировки элементов списка по дате"""
 
-    sorted_list_of_date = sorted(list_of_date, key=lambda i: i["date"], reverse=rev)
+    sorted_list_of_date = sorted(list_of_date, key=lambda date: date["date"], reverse=reverse_)
     return sorted_list_of_date
