@@ -1,4 +1,4 @@
-def filter_by_state(transactions: list, state: str = "EXECUTED") -> list:
+def filter_by_state(transactions: list, state: str = "EXECUTED") -> list | None:
     """Функция фильтрации по статусу операции"""
 
     transactions_executed = []
@@ -13,6 +13,8 @@ def filter_by_state(transactions: list, state: str = "EXECUTED") -> list:
         return transactions_executed
     elif state == "CANCELED":
         return transactions_canceled
+    else:
+        return None
 
 
 def sort_by_date(list_of_date: list[dict], reverse_: bool = True) -> list[dict]:
