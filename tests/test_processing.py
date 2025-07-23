@@ -13,13 +13,13 @@ from src.processing import sort_by_date
     ],
 )
 def test_filter_by_state(data_for_test_processing: list[dict], state: str, count: int) -> None:
-    # Тестирование функии фильтрации операций по статусу, и с отсутствующим статусом
+    """Тестирование функии фильтрации операций по статусу, и с отсутствующим статусом"""
     result = filter_by_state(data_for_test_processing, state)
     assert len(result) == count
 
 
 def test_filter_by_invalid_state(data_for_test_processing: list) -> None:
-    # Тестирование функии фильтрации операций по статусу при отсутствии словарей с указанным статусом
+    """Тестирование функии фильтрации операций по статусу при отсутствии словарей с указанным статусом"""
     with pytest.raises(ValueError, match="Указанного статуса нет в списке"):
         filter_by_state(data_for_test_processing, "INVALID")
 
@@ -48,5 +48,5 @@ def test_filter_by_invalid_state(data_for_test_processing: list) -> None:
     ],
 )
 def test_sort_by_date(data_for_test_processing: list, reverse_status: bool, result: list) -> None:
-    # Тестирование функции сортировки по дате в зависимости от статуса сортировки, и корректности даты
+    """Тестирование функции сортировки по дате в зависимости от статуса сортировки, и корректности даты"""
     assert sort_by_date(data_for_test_processing, reverse_status) == result

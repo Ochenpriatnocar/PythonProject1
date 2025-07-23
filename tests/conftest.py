@@ -2,28 +2,8 @@ import pytest
 
 
 @pytest.fixture
-def number_of_account_for_masks() -> str:
-    return "**7890"
-
-
-@pytest.fixture
-def card_number_for_masks() -> str:
-    return "1234 56** **** 3456"
-
-
-@pytest.fixture
-def number_of_account_for_widget() -> str:
-    return "Счет **7890"
-
-
-@pytest.fixture
-def card_number_for_widget() -> str:
-    return "Visa 1234 56** **** 3456"
-
-
-@pytest.fixture
 def data_for_test_processing() -> list:
-    # Данные для проверки тестов функиций фильтрации по статсусу и сортировки по дате
+    """Данные для проверки тестов функиций фильтрации по статсусу и сортировки по дате"""
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019:07:03T18:35:29.512364"},
         {"id": 615064591, "state": "CANCELED", "date": "2018+10-14T08:21:33.419441"},
