@@ -1,20 +1,5 @@
-import pytest
 
-
-@pytest.fixture
-def data_for_test_processing() -> list:
-    """Данные для проверки тестов функиций фильтрации по статсусу и сортировки по дате"""
-    return [
-        {"id": 41428829, "state": "EXECUTED", "date": "2019:07:03T18:35:29.512364"},
-        {"id": 615064591, "state": "CANCELED", "date": "2018+10-14T08:21:33.419441"},
-        {"id": 594226727, "state": "CANCELED", "date": "2018,09,12T21:27:25.241689"},
-        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
-    ]
-
-
-@pytest.fixture
-def transactions() -> list:
-    return [
+transactions = [
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -61,3 +46,43 @@ def transactions() -> list:
             "to": "Счет 14211924144426031657",
         },
     ]
+
+
+def filter_by_currency(transactions: list[dict], currency: str = "USD"):
+    """ Функция фильтрации транзакций по заданной валюте"""
+
+    for transaction in transactions:
+        if transaction["operationAmount"]["currency"]["code"] == currency:
+            yield transaction
+
+usd_transactions = filter_by_currency(transactions, "USD")
+
+for x in range(3):
+    print(next(usd_transactions))
+
+print("")
+
+
+def transaction_descriptions(transactions: list[dict]):
+    """ функция возвращает описание каждой операции по очереди"""
+
+    for transaction in transactions:
+        descriptions = [transaction["description"]]
+        yield descriptions
+
+descriptions = transaction_descriptions(transactions)
+for x in range(5):
+    print(next(descriptions))
+
+print("")
+
+
+def card_number_generator(start: int, stop: int):
+    """ Генерирует номера банковских карт."""
+
+    for i in range(start, stop):
+        card_number = str(i).zfill(16)
+        yield f"{card_number[:4]} {card_number[4:8]} {card_number[8:12]} {card_number[12:]}"
+
+for card_number in card_number_generator(1, 6):
+    print(card_number)

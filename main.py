@@ -2,6 +2,8 @@ from src.processing import filter_by_state
 from src.processing import sort_by_date
 from src.widget import get_date
 from src.widget import mask_account_card
+from src.generators import filter_by_currency
+from src.generators import transaction_descriptions
 
 print(mask_account_card("Счет 12345678901234567890"))
 print(mask_account_card("Счёт 12345678901234567899"))
@@ -29,3 +31,5 @@ print(
         ]
     )
 )
+
+
