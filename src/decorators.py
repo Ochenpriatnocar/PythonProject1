@@ -3,9 +3,9 @@ from functools import wraps
 
 
 def log(filename=None):
-    def decorator(func):
+    def wrapper(func):
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def decorator(*args, **kwargs):
             try:
                 time_1 = time.time()
                 result = func(*args, **kwargs)
@@ -17,6 +17,7 @@ def log(filename=None):
                     file.close()
                 else:
                     print(f"Начало: {time_1} \nФункция {name_func} ок. Результат: {result}\nКонец: {time_2}")
+                return result
             except TypeError:
                 name_func = func.__name__
                 if filename:
@@ -26,15 +27,17 @@ def log(filename=None):
                 else:
                     print(f"{name_func} error: TypeError. Inputs: {args}, {kwargs}")
 
-        return wrapper
+        return decorator
 
-    return decorator
+    return wrapper
 
 
-# @log(filename="2.txt")
+# @log()
 # def summa(a, b):
 #     """Сумма двух чисел"""
 #     return a + b
 #
 #
-# summa("2", 3)
+# data = summa(3, 4)
+# print(help(summa))
+
