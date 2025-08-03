@@ -12,7 +12,7 @@ def test_log_file():
 
     summa(1, 2)
     with open("1.txt", "r", encoding="utf-8") as file:
-        assert file.readlines()[1] == "Функция summa ок. Результат: 3\n"
+        assert file.readlines()[-3] == "Функция summa ок. Результат: 3\n"
 
 
 def test_log(capsys):
@@ -36,7 +36,7 @@ def test_error_log_file():
 
     summa("1", 2)
     with open("1.txt", "r", encoding="utf-8") as file:
-        assert file.readlines()[0] == "summa error: TypeError. Inputs: ('1', 2), {}"
+        assert file.readlines()[-1] == "summa error: TypeError. Inputs: ('1', 2), {}\n"
 
 
 def test_error_log(capsys):

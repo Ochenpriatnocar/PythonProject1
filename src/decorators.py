@@ -3,6 +3,7 @@ from functools import wraps
 
 
 def log(filename=None):
+    """Декоратор логирования"""
     def wrapper(func):
         @wraps(func)
         def decorator(*args, **kwargs):
@@ -12,7 +13,7 @@ def log(filename=None):
                 time_2 = time.time()
                 name_func = func.__name__
                 if filename:
-                    file = open(filename, "w", encoding="utf-8")
+                    file = open(filename, "a", encoding="utf-8")
                     file.write(f"Начало: {time_1} \nФункция {name_func} ок. Результат: {result}\nКонец: {time_2}\n\n")
                     file.close()
                 else:
@@ -21,8 +22,8 @@ def log(filename=None):
             except TypeError:
                 name_func = func.__name__
                 if filename:
-                    file = open(filename, "w", encoding="utf-8")
-                    file.write(f"{name_func} error: TypeError. Inputs: {args}, {kwargs}")
+                    file = open(filename, "a", encoding="utf-8")
+                    file.write(f"{name_func} error: TypeError. Inputs: {args}, {kwargs}\n")
                     file.close()
                 else:
                     print(f"{name_func} error: TypeError. Inputs: {args}, {kwargs}")
