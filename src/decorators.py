@@ -4,6 +4,7 @@ from functools import wraps
 
 def log(filename=None):
     """Декоратор логирования"""
+
     def wrapper(func):
         @wraps(func)
         def decorator(*args, **kwargs):
@@ -41,4 +42,3 @@ def log(filename=None):
 #
 # data = summa(3, 4)
 # print(help(summa))
-
