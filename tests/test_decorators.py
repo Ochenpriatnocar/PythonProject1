@@ -1,5 +1,3 @@
-import pytest
-
 from src.decorators import log
 
 
@@ -24,7 +22,7 @@ def test_log(capsys):
 
     summa(1, 2)
     captured = capsys.readouterr()
-    assert captured.out[captured.out.find("Ф") : captured.out.find("К")] == "Функция summa ок. Результат: 3\n"
+    assert captured.out[captured.out.find("Ф"): captured.out.find("К")] == "Функция summa ок. Результат: 3\n"
 
 
 def test_error_log_file():

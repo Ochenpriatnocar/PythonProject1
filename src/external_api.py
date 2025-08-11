@@ -3,10 +3,8 @@ import os
 import requests
 from dotenv import load_dotenv
 
-# from src.utils import open_file
 
-
-def transactions_by_rub(operation):
+def transactions_by_rub(operation: dict) -> float | None:
     """Функция конвертации транзакции в рубли"""
 
     load_dotenv()
@@ -27,10 +25,12 @@ def transactions_by_rub(operation):
             "amount": {operation["operationAmount"]["amount"]},
         }
         response_json = requests.get(url, headers=headers, params=payload)
-        return round(float(response_json.json()["result"]), 2)
+        status_code = response_json.status_code
+        if status_code == 200:
+            return round(float(response_json.json()["result"]), 2)
+        elif status_code == 404:
+            print("Неверный запрос")
+        else:
+            status_code == 500
+            print("Непредвиденная ошибка на сервере")
     return
-
-
-# data_str = open_file('../data/operations.json')
-# a = transactions_by_rub(data_str[1])
-# print(a)
