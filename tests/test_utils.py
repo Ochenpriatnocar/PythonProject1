@@ -1,4 +1,6 @@
+import os
 from unittest.mock import Mock
+from config import ROOT_DIR
 
 from src.utils import open_file
 
@@ -13,7 +15,11 @@ def test_open_file_with_mock(data_operations: list) -> None:
 
 def test_open_file(data_operations: list) -> None:
     """Тестирование работы функции открытия файла"""
-    assert open_file("C:/Users/DARIK/PycharmProjects/PythonProject1/data/operations.json") == data_operations
+
+    # tests_dir = os.path.dirname(__file__)
+    assert open_file(f"{ROOT_DIR}/data/operations.json") == data_operations
+    # target_file = os.path.join(tests_dir, '..', 'data', 'operations.json')
+    # assert open_file(target_file) == data_operations
 
 
 def test_open_file_note_found() -> None:
