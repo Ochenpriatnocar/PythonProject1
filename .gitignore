@@ -36,6 +36,10 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
+
+ Unit test / coverage reports
+
+=======
 # Unit test / coverage reports
 # htmlcov/
 .tox/
@@ -200,3 +204,4 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
