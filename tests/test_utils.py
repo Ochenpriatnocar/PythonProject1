@@ -1,7 +1,6 @@
-import os
 from unittest.mock import Mock
-from config import ROOT_DIR
 
+from config import ROOT_DIR
 from src.utils import open_file
 
 

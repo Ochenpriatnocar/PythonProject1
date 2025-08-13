@@ -278,3 +278,8 @@ summa error: TypeError. Inputs: ('1', 2), {}
 Конец: 1754936042.9899623
 
 summa error: TypeError. Inputs: ('1', 2), {}
+Начало: 1755103647.9788053 
+Функция summa ок. Результат: 3
+Конец: 1755103647.9788086
+
+summa error: TypeError. Inputs: ('1', 2), {}
