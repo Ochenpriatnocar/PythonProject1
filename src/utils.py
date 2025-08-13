@@ -12,17 +12,18 @@ def open_file(link_to_file: str) -> list:
     try:
         with open(link_to_file, "r", encoding="utf-8") as f:
             data = json.load(f)
-            logger.info("Получение результата функции")
+        logger.info("Получение результата функции")
         return data if data else []
 
     except FileNotFoundError:
-        logger.info(f"Ошибка расположения файла {link_to_file}")
+        logger.error(f"Ошибка расположения файла {link_to_file}")
         return []
 
     except TypeError:
-        logger.info("Ошибка типа данных")
+        logger.error("Ошибка типа данных")
         return []
 
 
-if __name__ == "__main__":
-    open_file("../data/operations.json")
+
+# if __name__ == "__main__":
+#     open_file("../data/operations.json")
