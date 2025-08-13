@@ -10,7 +10,7 @@ def test_get_mask_account() -> None:
 
 
 def test_get_mask_card_number() -> None:
-    """Проверка на правильность маскировки счета"""
+    """Проверка на правильность маскировки номера карты"""
     assert get_mask_card_number("1234567890123456") == "1234 56** **** 3456"
 
 
